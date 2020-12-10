@@ -1,18 +1,17 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class HomeController extends GetxController {
   //TODO: Implement HomeController
-  
-  final count = 0.obs;
+  TextEditingController weightController = TextEditingController();
+  TextEditingController heightController = TextEditingController();
 
-  @override
-  void onInit() {}
+  final imcValue = 0.0.obs;
 
-  @override
-  void onReady() {}
-
-  @override
-  void onClose() {}
-
-  void increment() => count.value++;
+  onCalcImcPressed() {
+    final weight = double.parse(weightController.text);
+    final height = double.parse(heightController.text);
+    final h = height * height;
+    imcValue.value = (weight /h);
+  }
 }

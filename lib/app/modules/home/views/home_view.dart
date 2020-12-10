@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart'; 
+import 'package:get/get.dart';
 import 'package:carnivore_track/app/modules/home/controllers/home_controller.dart';
 
 class HomeView extends GetView<HomeController> {
@@ -11,12 +11,24 @@ class HomeView extends GetView<HomeController> {
         centerTitle: true,
       ),
       body: Center(
-        child: Text(
-          'HomeView is working', 
-          style: TextStyle(fontSize:20),
+        child: Column(
+          children: [
+            TextField(
+              decoration: InputDecoration(hintText: 'Peso'),
+              controller: controller.weightController,
+            ),
+            TextField(
+              decoration: InputDecoration(hintText: 'Altura'),
+              controller: controller.heightController,
+            ),
+            ElevatedButton(
+              onPressed: controller.onCalcImcPressed,
+              child: Text('confirmar'),
+            ),
+            Obx(() => Text(controller.imcValue.value.toString())),
+          ],
         ),
       ),
     );
   }
 }
-  
